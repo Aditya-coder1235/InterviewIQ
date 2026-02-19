@@ -1,4 +1,6 @@
 const Interview = require('../models/Interview');
+const {evaluateAnswer}=require('../services/aiService')
+const {generateQuestions}=require('../services/aiService')
 
 exports.startInterview = async (req, res) => {
     try {
@@ -8,11 +10,13 @@ exports.startInterview = async (req, res) => {
             return res.status(400).json({ message: "Role is required" });
         }
 
-        const questions = [
-            { question: "What is JavaScript?" },
-            { question: "What is React?" },
-            { question: "Explain Node.js" }
-        ];
+        const aiResponse = await generateQuestions(role);
+        const questions = aiResponse.questions.map(q => ({
+            question: q.question,
+            answer: "",
+            feedback: "",
+            score: 0
+        }));
 
         const interview = await Interview.create({
             userId: req.user.id,
@@ -27,9 +31,26 @@ exports.startInterview = async (req, res) => {
         });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Server error" });
     }
 };
+
+
+exports.getInterview=async(req,res)=>{
+    try {
+        const { id } = req.params;
+
+        const interview=await Interview.findById(id)
+
+        res.status(200).json({
+            message: "Interview Fetched", interview
+        });
+
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+}
 
 
 exports.submitInterview = async (req, res) => {
@@ -49,18 +70,38 @@ exports.submitInterview = async (req, res) => {
             return res.status(404).json({ message: "Interview not found" });
         }
 
-        interview.questions.forEach((q, index) => {
-            q.answer = answers[index] || "";
-        });
+        let totalScore = 0;
 
+        for (let i = 0; i < interview.questions.length; i++) {
+            const q = interview.questions[i];
+            const userAnswer = answers[i] || "";
+
+            const aiResult = await evaluateAnswer(
+                q.question,
+                userAnswer,
+                interview.role
+            );
+
+            q.answer = userAnswer;
+            q.score = aiResult.score;
+            q.feedback = aiResult.feedback;
+            q.improvement = aiResult.improvement;
+
+            totalScore += aiResult.score;
+        }
+
+        interview.totalScore = totalScore;
+        interview.status = "completed";
 
         await interview.save();
 
         res.status(200).json({
-            message: "Answers submitted successfully"
+            message: "Interview evaluated successfully",
+            totalScore
         });
 
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Server error" });
     }
 };

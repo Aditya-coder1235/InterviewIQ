@@ -2,7 +2,8 @@ const express = require('express');
 const {
     startInterview,
     submitInterview,
-    getInterviewHistory
+    getInterviewHistory,
+    getInterview
 } = require('../controller/interviewController');
 
 const isAuth=require('../middleware/authMiddleware')
@@ -10,6 +11,7 @@ const isAuth=require('../middleware/authMiddleware')
 const router = express.Router();
 
 router.post('/start', isAuth, startInterview);
+router.get('/getInterview/:id',getInterview)
 router.post('/submit', isAuth, submitInterview);
 router.get('/history', isAuth, getInterviewHistory);
 

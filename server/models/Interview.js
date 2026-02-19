@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const interviewSchema = new mongoose.Schema(
     {
@@ -28,18 +28,28 @@ const interviewSchema = new mongoose.Schema(
                     type: String,
                     default: ""
                 },
+                improvement: {
+                    type: String,
+                    default: ""
+                },
                 score: {
                     type: Number,
                     min: 0,
-                    max: 10
+                    max: 10,
+                    default: 0
                 }
             }
         ],
 
         overallScore: {
             type: Number,
-            min: 0,
-            max: 10
+            default: 0
+        },
+
+        status: {
+            type: String,
+            enum: ["started", "completed"],
+            default: "started"
         }
     },
     { timestamps: true }

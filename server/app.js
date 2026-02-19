@@ -4,6 +4,8 @@ require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const connectDb = require('./config/db');
+const OpenAI = require("openai");
+
 
 const port = process.env.PORT || 5000;
 
