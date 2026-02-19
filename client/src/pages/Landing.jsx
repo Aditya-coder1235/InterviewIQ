@@ -12,21 +12,30 @@ const Landing = () => {
     const navigate=useNavigate()
     return (
         <div>
-            <nav className="flex h-16 border-b-gray-200 items-center justify-around gap-40">
-                <div className="ms-25 text-xl font-bold text-blue-500">
+            <nav className="flex h-16 border-b-gray-200 items-center justify-around md:gap-40">
+                <div className="md:ms-25 md:text-xl font-bold b">
                     InterviewIQ
                 </div>
-                <div className="flex gap-8 font-semibold opacity-60">
-                    <a href="">Features</a>
-                    <a href="">Reviews</a>
-                    <a href="">Pricing</a>
+                <div className="flex  md:gap-8 md:font-semibold opacity-60">
+                    <a href="/login" className="hidden p md:inline-block">
+                        Features
+                    </a>
+                    <a href="/login" className="hidden p md:inline-block">
+                        Reviews
+                    </a>
+                    <a href="/login" className="hidden p md:inline-block">
+                        Pricing
+                    </a>
                 </div>
-                <div className="flex gap-5 items-center">
-                    <Link to={"/login"} className="font-semibold">
+                <div className="flex md:gap-5 gap-3 items-center">
+                    <Link
+                        to={"/login"}
+                        className="md:font-semibold text-xs md:text-sm"
+                    >
                         sign in
                     </Link>
                     <button
-                        className="btn bg-blue-500 text-white"
+                        className="md:btn p-1 md:p-3 text-xs rounded bg-blue-500 text-white"
                         onClick={() => navigate("/signup")}
                     >
                         Get Started Free
@@ -34,9 +43,9 @@ const Landing = () => {
                 </div>
             </nav>
 
-            <div className="bg-gray-100  min-h-screen">
-                <div className="flex gap-20   ">
-                    <div className="flex flex-col ms-45  pt-22 ">
+            <div className="bg-gray-100 w-full  min-h-screen">
+                <div className="flex gap-20  ">
+                    <div className="flex flex-col text-center  md:ms-40  md:pt-22  pt-15">
                         <h1 className="text-5xl font-bold tracking-wide">
                             Ace Your Next
                         </h1>
@@ -57,30 +66,30 @@ const Landing = () => {
                         </p>
                         <button
                             onClick={() => navigate("/signup")}
-                            className="btn mt-9 w-50 bg-blue-500 text-white
+                            className="btn mt-9 w-50 m-auto bg-blue-500 text-white
 "
                         >
                             <Play size={15} />
                             Start Practicing Free
                         </button>
                     </div>
-                    <div className="pt-15">
+                    <div className="pt-15 hidden md:block">
                         <img src="/b.png" alt="" className="w-120" />
                     </div>
                 </div>
 
-                <div className="text-center mt-40">
-                    <h1 className="text-4xl font-bold">
+                <div className="text-center  mt-40">
+                    <h1 className=" text-xl md:text-4xl font-bold">
                         Everything You Need To Succeed
                     </h1>
-                    <p className="text-sm mt-3 opacity-55">
+                    <p className="text-xs  md:text-sm mt-3 opacity-55">
                         Our comprehensive platform provides all the tools and
                         insights you
                     </p>
-                    <p className="text-sm opacity-55">
+                    <p className="md:text-sm text-xs opacity-55">
                         need to excel in any interview
                     </p>
-                    <div className="flex justify-center mt-15 gap-5">
+                    <div className="flex justify-center flex-col items-center md:flex-row mt-15 gap-5">
                         <div className="r w-60 h p-8 h-80 rounded-2xl ">
                             <div className="c w-9 flex items-center h-9 m-auto rounded-xl">
                                 <Brain className="m-auto" />
@@ -136,16 +145,18 @@ const Landing = () => {
                 </div>
 
                 <div className="text-center mt-40">
-                    <h1 className="text-4xl font-bold">How It Works</h1>
-                    <p className="text-sm mt-7 opacity-55">
+                    <h1 className="text-xl md:text-4xl font-bold">
+                        How It Works
+                    </h1>
+                    <p className="text-xs md:text-sm mt-7 opacity-55">
                         Get started in minute and see result immediately
                     </p>
-                    <div className="flex justify-center pt-15 gap-15">
+                    <div className="flex justify-center pt-10  md:pt-15 md:gap-15">
                         <div className="flex flex-col gap-3">
                             <div className="c w-8 rounded-full text-xl text-white m-auto h-8">
                                 1
                             </div>
-                            <span className="border relative bottom-7 left-32"></span>
+                            <span className="border hidden md:inline-block relative bottom-7 left-32"></span>
                             <h2 className="font-bold">Choose Your Role</h2>
                             <p className="text-xs opacity-65">
                                 Select job role and experience level.
@@ -155,7 +166,7 @@ const Landing = () => {
                             <div className="c w-8 rounded-full text-xl text-white m-auto h-8">
                                 2
                             </div>
-                            <span className="border relative bottom-7 left-32"></span>
+                            <span className="border hidden md:inline-block relative bottom-7 left-32"></span>
                             <h2 className="font-bold">Answer Questions</h2>
                             <p className="text-xs opacity-65">
                                 AI asks technical interview questions.
@@ -165,7 +176,10 @@ const Landing = () => {
                             <div className="c w-8 rounded-full text-xl text-white m-auto h-8">
                                 3
                             </div>
+
                             <h2 className="font-bold">Get Feedback</h2>
+                            <p className="md:hidden"></p>
+                            <p className="md:hidden"></p>
                             <p className="text-xs opacity-65">
                                 Receive instant AI evaluation and score.
                             </p>

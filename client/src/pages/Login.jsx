@@ -50,51 +50,55 @@ const Login = () => {
     };
 
     return (
-        <div className=" flex justify-center md:items-center min-h-screen  py-5">
-            <div className="w-full max-w-md  md:shadow-xl md:rounded-2xl p-8 ">
-                <h2 className="text-3xl font-bold text-center text-blue-500 mb-6">
+        <div className="flex justify-center mt-20 md:mt-0 min-h-screen py-5 px-4 bg-gray-50">
+            <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 md:p-8">
+                <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-500 mb-6">
                     Welcome Back
                 </h2>
 
                 <form
-                    className="space-y-5 flex flex-col items-center"
+                    className="space-y-5 flex flex-col"
                     onSubmit={handleSubmit}
                 >
-                    <fieldset className="fieldset">
-                        <legend className="fieldset-legend">email</legend>
+                    <fieldset className="flex flex-col">
+                        <legend className="text-sm md:text-xs font-semibold mb-1">
+                            Email
+                        </legend>
                         <input
                             type="email"
-                            className="input w-90"
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="you@example.com"
                             name="email"
                             value={formData.email}
                             onChange={handleOnChange}
+                            required
                         />
                     </fieldset>
 
-                    <fieldset className="fieldset">
-                        <legend className="fieldset-legend">password</legend>
+                    <fieldset className="flex flex-col">
+                        <legend className="text-sm md:text-xs font-semibold mb-1">
+                            Password
+                        </legend>
                         <input
                             type="password"
-                            className="input w-90"
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             placeholder="••••••••"
                             name="password"
                             value={formData.password}
                             onChange={handleOnChange}
+                            required
                         />
                     </fieldset>
+
                     {error && (
-                        <div
-                            role="alert"
-                            className="alert alert-error alert-soft"
-                        >
-                            <span>{error}</span>
+                        <div className="text-red-500 text-sm bg-red-100 p-2 rounded-md">
+                            {error}
                         </div>
                     )}
 
                     <button
                         type="submit"
-                        className="btn w-30 bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                        className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
                     >
                         {loading ? (
                             <span className="loading loading-spinner loading-sm"></span>
@@ -102,11 +106,12 @@ const Login = () => {
                             "Login"
                         )}
                     </button>
-                    <p className="text-center mt-1 text-sm ">
+
+                    <p className="text-center mt-2 text-sm">
                         Don't have an account?{" "}
                         <a
                             href="/signup"
-                            className="text-blue-700 font-semibold hover:underline "
+                            className="text-blue-700 font-semibold hover:underline"
                         >
                             Signup
                         </a>

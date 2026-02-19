@@ -11,7 +11,12 @@ exports.startInterview = async (req, res) => {
         }
 
         const aiResponse = await generateQuestions(role);
-        const questions = aiResponse.questions.map(q => ({
+
+        if (!Array.isArray(aiResponse)) {
+            return res.status(500).json({ message: "AI did not return valid questions" });
+        }
+
+        const questions = aiResponse.map(q => ({
             question: q.question,
             answer: "",
             feedback: "",
@@ -37,11 +42,12 @@ exports.startInterview = async (req, res) => {
 };
 
 
+
 exports.getInterview=async(req,res)=>{
     try {
         const { id } = req.params;
 
-        const interview=await Interview.findById(id)
+        const interview=await Interview.findById(id).populate("userId")
 
         res.status(200).json({
             message: "Interview Fetched", interview
@@ -90,14 +96,15 @@ exports.submitInterview = async (req, res) => {
             totalScore += aiResult.score;
         }
 
-        interview.totalScore = totalScore;
+        interview.overallScore = totalScore;
         interview.status = "completed";
 
         await interview.save();
 
         res.status(200).json({
             message: "Interview evaluated successfully",
-            totalScore
+            totalScore,
+            interview
         });
 
     } catch (error) {

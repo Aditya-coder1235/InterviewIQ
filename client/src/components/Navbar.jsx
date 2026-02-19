@@ -1,23 +1,53 @@
-import React from 'react'
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
+import axios from "axios";
 
 const Navbar = () => {
+    let user = localStorage.getItem("user");
 
-    let user=localStorage.getItem("user")
+    const userLogout = async () => {
+        try {
+            let res = await axios.post(
+                "http://localhost:5000/api/auth/logout",
+                {},
+                { withCredentials: true },
+            );
+            console.log(res.data);
+            localStorage.removeItem("user");
+            localStorage.removeItem("userId");
+            localStorage.removeItem("email");
+        } catch (error) {
+            console.log(error.response.data.message);
+        }
+    };
 
-  return (
-      <nav className="flex h-16 border-b-gray-200 items-center gap-40 justify-around">
-          <div className="ms-25 text-xl font-bold text-blue-500">
-              InterviewIQ
-          </div>
-          <div className="flex gap-8 font-semibold opacity-60">
-              <Link to={"/home"}>Home</Link>
-              <Link to={"/home"}>History</Link>
-              <Link to={"/home"}>Pricing</Link>
-              <Link to={"/home"}>About</Link>
-          </div>
-          <div className="flex gap-5 items-center">
-              {/* <Link to={"/login"} className="font-semibold">
+    return (
+        <nav className="flex h-16 border-b-gray-200 items-center gap- md:gap-40 justify-around">
+            <div className="md:ms-25 md:text-xl font-bold b">InterviewIQ</div>
+            <div className="flex md:gap-8 md:text-sm text-xs gap-2 ms-8 md:ms-0 md:font-semibold opacity-75 md:opacity-60">
+                <Link to={"/home"} className="p">
+                    Home
+                </Link>
+                <Link to={"/history"} className="p">
+                    History
+                </Link>
+                <Link to={"/price"} className="p">
+                    Pricing
+                </Link>
+                <Link to={"/about"} className="p">
+                    About
+                </Link>
+                {user && (
+                    <button
+                        onClick={() => userLogout()}
+                        className="cursor-pointer p"
+                    >
+                        Logout
+                    </button>
+                )}
+            </div>
+            <div className="flex md:gap-5 items-center">
+                {/* <Link to={"/login"} className="font-semibold">
                   sign in
               </Link>
               <button
@@ -26,19 +56,19 @@ const Navbar = () => {
               >
                   Logout
               </button> */}
-              <div className="flex items-center gap-5">
-                  <h2 className="font-semibold">Welcome {user}!</h2>
-                  <div className="c h-10 w-10 rounded-full flex items-center justify-center">
-                      <span className="text-xl font-bold text-white ">
-                          {user.charAt(0).toUpperCase()}
-                      </span>
-                  </div>
-              </div>
-          </div>
-      </nav>
+                <div className="flex items-center gap-5 ">
+                    <h2 className="font-semibold hidden md:block ">
+                        Welcome {user}!
+                    </h2>
+                    <div className="c md:h-10 h-6 w-6 md:w-10 rounded-full md:flex items-center justify-center hidden m">
+                        <span className="text-xs md:text-xl font-bold text-white hidden md:block">
+                            {user && user.charAt(0).toUpperCase()}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    );
+};
 
-      
-  );
-}
-
-export default Navbar
+export default Navbar;

@@ -18,3 +18,19 @@
 .r{
   border: 1px solid rgb(177, 176, 176);
 }
+
+.p:hover{
+  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+body{
+  overflow-x: hidden;
+}
+
+button{
+  cursor: pointer;
+}
