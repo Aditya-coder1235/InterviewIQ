@@ -93,7 +93,7 @@ const InterviewResults = () => {
                                 {interview && interview.overallScore}
                             </span>
                             <span className="text-blue-400 text-xl font-bold">
-                                / 10
+                                / 50
                             </span>
                         </div>
                         <p className="mt-4 text-slate-400 text-sm italic">

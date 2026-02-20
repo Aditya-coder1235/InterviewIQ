@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { User, Bot, Send, CheckCheck } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Interview = () => {
     const { id } = useParams();
@@ -15,6 +17,8 @@ const Interview = () => {
     const [answer, setAnswer] = useState("");
     const [answers, setAnswers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
+
 
     const fetchInterview = async () => {
         try {
@@ -43,7 +47,7 @@ const Interview = () => {
 
     const handleNext = () => {
         if (!answer.trim()) {
-            alert("Please enter your answer");
+            toast.error("Please enter your answer");
             return;
         }
 
@@ -60,6 +64,7 @@ const Interview = () => {
 
     const submitInterview = async (finalAnswers) => {
         try {
+            setSubmitting(true);
             let res = await axios.post(
                 "http://localhost:5000/api/interview/submit",
                 {
@@ -69,11 +74,12 @@ const Interview = () => {
                 { withCredentials: true },
             );
 
-            console.log(res.data);
-            alert("Interview Completed Successfully!");
+            toast.success("Interview Completed Successfully!");
             navigate(`/result/${id}`);
         } catch (error) {
             console.log(error.response?.data?.message || error.message);
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -82,6 +88,7 @@ const Interview = () => {
     return (
         <div className=" h-screen bg-slate-50">
             <Navbar />
+            <ToastContainer position="top-right" autoClose={3000} />
             <div className="flex-1 flex flex-col">
                 <h1 className="text-center pt-5 text-blue-500 md:text-4xl font-bold">
                     Answer The All Questions
@@ -127,9 +134,16 @@ const Interview = () => {
                         />
                         <button
                             onClick={handleNext}
-                            className="bg-blue-500 text-white p-3 rounded-xl hover:bg-blue-700 transition"
+                            className="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled={submitting}
                         >
-                            {currentIndex === 4 ? "Submit" : <Send size={18} />}
+                            {submitting ? (
+                                <span className="loader border-2 border-white border-t-transparent rounded-full w-5 h-5 animate-spin"></span>
+                            ) : currentIndex === questions.length - 1 ? (
+                                "Submit"
+                            ) : (
+                                <Send size={18} />
+                            )}
                         </button>
                     </div>
 

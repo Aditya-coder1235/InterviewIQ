@@ -4,45 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const Pricing = () => {
-    const tiers = [
-        {
-            name: "Starter",
-            price: "0",
-            description: "Perfect for students and early-stage startups.",
-            features: [
-                "5 AI Interviews / month",
-                "Basic Text Analysis",
-                "Shareable Results URL",
-                "Email Support",
-            ],
-            status: "Available Now",
-        },
-        {
-            name: "Professional",
-            price: "49",
-            description: "For scaling teams needing deeper insights.",
-            features: [
-                "Unlimited Interviews",
-                "Deep Skills Mapping",
-                "Custom Question Sets",
-                "Priority Support",
-            ],
-            status: "Coming Soon",
-        },
-        {
-            name: "Enterprise",
-            price: "Custom",
-            description: "Enterprise-grade security and integration.",
-            features: [
-                "SSO Integration",
-                "Custom AI Fine-tuning",
-                "Dedicated Recruiter Dashboard",
-                "API Access",
-            ],
-            status: "Coming Soon",
-        },
-    ];
-
+   
     return (
         <div>
             <Navbar/>

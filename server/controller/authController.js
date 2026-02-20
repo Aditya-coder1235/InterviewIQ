@@ -51,12 +51,12 @@ exports.loginUser = async (req, res) => {
             {expiresIn:'2d'}
         )
 
-        res.cookie('token',token,{
-            httpOnly:true,
-            secure:false,
-            sameSite:'lax',
-            path: '/',      
-            maxAge: 2 * 24 * 60 * 60 * 1000
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: true,
+            sameSite:'strict',
+            path: '/',
+            maxAge: 2 * 24 * 60 * 60 * 1000 
         });
 
         res.status(200).json({message:"User login success",user});
@@ -72,9 +72,9 @@ exports.logoutUser = async (req, res) => {
 
         res.clearCookie('token', {
             httpOnly: true,
-            secure: false,
-            sameSite: 'lax',
-            path: '/',       
+            secure: true,
+            sameSite: 'strict',
+            path: '/',     
             maxAge: 2 * 24 * 60 * 60 * 1000
         });
 

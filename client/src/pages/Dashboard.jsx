@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -11,6 +12,9 @@ const Dashboard = () => {
     const[loading,setLoading]=useState(false)
     const[history,setHistory]=useState([])
     const [expanded, setExpanded] = useState(false);
+
+     const notify = () => toast("Lets start the Interview!");
+
 
     const createInterview = async () => {
         try {
@@ -118,6 +122,7 @@ const Dashboard = () => {
                                     <button
                                         type="submit"
                                         className="mt-3 btn  px-4 py-2 rounded"
+                                        onClick={notify}
                                     >
                                         {" "}
                                         {loading ? (
@@ -125,6 +130,7 @@ const Dashboard = () => {
                                         ) : (
                                             "Continue"
                                         )}
+                                        <ToastContainer />
                                     </button>
                                 </form>
                             )}
