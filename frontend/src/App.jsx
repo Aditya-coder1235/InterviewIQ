@@ -3,7 +3,7 @@ import {Route,Routes} from 'react-router-dom'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
-import Dashboard from './pages/dashboard';
+import Dashboard from './pages/Dashboard'
 import Interview from './pages/Interview';
 import InterviewResults from './pages/InterviewResults';
 import History from './pages/History';
