@@ -27,7 +27,7 @@ const Login = () => {
         try {
             setLoading(true);
             let res = await axios.post(
-                "http://localhost:5000/api/auth/login",
+                "https://interviewiq-zjne.onrender.com/api/auth/login",
                 formData,
                 { withCredentials: true },
             );

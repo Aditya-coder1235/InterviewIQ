@@ -11,7 +11,7 @@ const History = () => {
         try {
             // setLoading(true);
             let res = await axios.get(
-                "http://localhost:5000/api/interview/history",
+                "https://interviewiq-zjne.onrender.com/api/interview/history",
                 { withCredentials: true },
             );
             // console.log();

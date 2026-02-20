@@ -8,7 +8,7 @@ const Navbar = () => {
     const userLogout = async () => {
         try {
             let res = await axios.post(
-                "http://localhost:5000/api/auth/logout",
+                "https://interviewiq-zjne.onrender.com/api/auth/logout",
                 {},
                 { withCredentials: true },
             );

@@ -23,7 +23,7 @@ const Interview = () => {
     const fetchInterview = async () => {
         try {
             const res = await axios.get(
-                `http://localhost:5000/api/interview/getInterview/${id}`,
+                `https://interviewiq-zjne.onrender.com/api/interview/getInterview/${id}`,
                 { withCredentials: true },
             );
             setQuestions(res.data.interview.questions);
@@ -66,7 +66,7 @@ const Interview = () => {
         try {
             setSubmitting(true);
             let res = await axios.post(
-                "http://localhost:5000/api/interview/submit",
+                "https://interviewiq-zjne.onrender.com/api/interview/submit",
                 {
                     interviewId: id,
                     answers: finalAnswers,

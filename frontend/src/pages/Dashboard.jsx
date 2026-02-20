@@ -20,7 +20,7 @@ const Dashboard = () => {
         try {
             setLoading(true)
             let res = await axios.post(
-                "http://localhost:5000/api/interview/start",
+                "https://interviewiq-zjne.onrender.com/api/interview/start",
                 { role },
                 { withCredentials: true },
             );
@@ -37,7 +37,7 @@ const Dashboard = () => {
         try {
             // setLoading(true);
             let res = await axios.get(
-                "http://localhost:5000/api/interview/history",
+                "https://interviewiq-zjne.onrender.com/api/interview/history",
                 { withCredentials: true },
             );
             // console.log();
