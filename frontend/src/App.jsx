@@ -9,7 +9,7 @@ import InterviewResults from './pages/InterviewResults';
 import History from './pages/History';
 import About from './pages/About';
 import Pricing from './pages/Pricing';
-import ProtectedRoutes from './pages/Protectedroutes';
+import ProtectedRoutes from './pages/ProtectedRoutes';
 
 const App = () => {
   return (
