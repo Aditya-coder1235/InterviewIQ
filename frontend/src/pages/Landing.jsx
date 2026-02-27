@@ -14,7 +14,7 @@ const Landing = () => {
         <div>
             <nav className="flex h-16 border-b-gray-200 items-center justify-around md:gap-40">
                 <div className="md:ms-12">
-                    <img src="/logo.png" alt=""  className="h-15"/>
+                    <img src="/logo.png" alt="" className="h-12 md:h-15" />
                 </div>
                 <div className="flex  md:gap-8 md:font-semibold opacity-60">
                     <a href="/login" className="hidden p md:inline-block">
@@ -30,12 +30,12 @@ const Landing = () => {
                 <div className="flex md:gap-5 gap-3 items-center">
                     <Link
                         to={"/login"}
-                        className="md:font-semibold text-xs md:text-sm"
+                        className="md:font-semibold text-[8px] md:text-sm"
                     >
                         sign in
                     </Link>
                     <button
-                        className="md:btn p-1 md:p-3 c text-xs rounded bg-blue-500 text-white"
+                        className="md:btn p-1 md:p-3 c text-[8px] md:text-xs rounded bg-blue-500 text-white"
                         onClick={() => navigate("/signup")}
                     >
                         Get Started Free
@@ -44,15 +44,15 @@ const Landing = () => {
             </nav>
 
             <div className="bg-gray-10 w-full  min-h-screen">
-                <div className="flex gap-20  ">
+                <div className="flex gap-20  justify-center md:justify-start">
                     <div className="flex flex-col text-center md:text-start md:ms-40  md:pt-22  pt-15">
-                        <h1 className="text-5xl font-bold tracking-wide">
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-wide">
                             Ace Your Next
                         </h1>
-                        <h1 className="text-5xl font-bold tracking-wide">
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-wide">
                             Interview With <span className="b">AI-</span>
                         </h1>
-                        <h1 className="text-5xl font-bold tracking-wide">
+                        <h1 className="text-3xl md:text-5xl font-bold tracking-wide">
                             <span className="b">Powered</span> Practice
                         </h1>
                         <p className="pt-3 text-xs opacity-55">
@@ -66,7 +66,7 @@ const Landing = () => {
                         </p>
                         <button
                             onClick={() => navigate("/signup")}
-                            className="btn mt-9 c w-50 m-auto md:ms-0 bg-blue-500 text-white
+                            className="btn mt-9 c text-[10px] md:text-xs w-38 md:w-50 m-auto md:ms-0 bg-blue-500 text-white
 "
                         >
                             <Play size={15} />

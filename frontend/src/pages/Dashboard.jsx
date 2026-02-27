@@ -11,7 +11,6 @@ const Dashboard = () => {
     const [role, setRole] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const notify = () => toast("Lets start the Interview!");
 
     const createInterview = async () => {
         try {
@@ -50,14 +49,16 @@ const Dashboard = () => {
             <div className="bg-gray-10">
                 <div className="flex md:justify-center flex-col md:flex-row gap-10 md:gap-25  w-full  min-h-screen">
                     <ToastContainer position="top-right" autoClose={3000} />
-                    <div className="text-center md:text-start pt-25">
-                        <h1 className="text-5xl font-bold">Prepare for</h1>
-                        <h1 className="text-5xl font-bold">
+                    <div className="text-center md:text-start md:pt-25">
+                        <h1 className="text-4xl md:text-5xl font-bold">
+                            Prepare for
+                        </h1>
+                        <h1 className="text-4xl md:text-5xl font-bold">
                             Interview With{" "}
                             <span className="gradient-text b">AI</span>
                         </h1>
 
-                        <p className="text-sm mt-5 opacity-75">
+                        <p className="text-[12px] mt-2 md:text-sm md:mt-5 opacity-75">
                             Practice mock technical interview and get <br />
                             instant AI-powered feedback to improve your skills.
                         </p>

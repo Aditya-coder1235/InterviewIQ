@@ -24,9 +24,9 @@ const Navbar = () => {
     return (
         <nav className="flex h-16 border-b-gray-200 items-center gap- md:gap-40 justify-around">
             <div className="md:ms-12">
-                <img src="/logo.png" alt="" className="h-15" />
+                <img src="/logo.png" alt="" className="h-12 md:h-15" />
             </div>
-            <div className="flex md:gap-8 md:text-sm text-xs gap-2 ms-8 md:ms-0 md:font-semibold opacity-75 md:opacity-60">
+            <div className="flex md:gap-8 md:text-sm text-xs gap-2  md:ms-0 md:font-semibold opacity-75 md:opacity-60">
                 <Link to={"/home"} className="p">
                     Home
                 </Link>
@@ -49,15 +49,6 @@ const Navbar = () => {
                 )}
             </div>
             <div className="flex md:gap-5 items-center">
-                {/* <Link to={"/login"} className="font-semibold">
-                  sign in
-              </Link>
-              <button
-                  className="btn bg-blue-500 text-white"
-                //   onClick={() => navigate("/signup")}
-              >
-                  Logout
-              </button> */}
                 <div className="flex items-center gap-5 ">
                     <h2 className="font-semibold hidden md:block ">
                         Welcome {user}!
