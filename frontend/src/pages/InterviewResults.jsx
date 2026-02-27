@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const InterviewResults = () => {
     const navigate=useNavigate()
@@ -37,6 +39,7 @@ const InterviewResults = () => {
     // console.log(questions);
     return (
         <div className="min-h-screen bg-white p-10">
+            <Navbar/>
             <div className="max-w-5xl mx-auto">
                 <header className="mb-12 flex justify-center md:justify-between items-center md:flex-row flex-col">
                     <div>
@@ -50,7 +53,7 @@ const InterviewResults = () => {
                             </span>{" "}
                         </p>
                     </div>
-                    <button className="btn md:mt-0 mt-3 bg-blue-500 text-white" onClick={()=>navigate('/home')}>
+                    <button className="btn md:mt-0 mt-3 c text-white" onClick={()=>navigate('/home')}>
                        Start New Interview
                     </button>
                 </header>
@@ -141,6 +144,7 @@ const InterviewResults = () => {
                    
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

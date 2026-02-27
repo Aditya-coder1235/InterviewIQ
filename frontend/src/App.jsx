@@ -18,7 +18,7 @@ const App = () => {
               <Route path="/" element={<Landing />}></Route>
               <Route path="/signup" element={<Signup />}></Route>
               <Route path="/login" element={<Login />}></Route>
-              {/* <Route element={<ProtectedRoutes />}> */}
+              <Route element={<ProtectedRoutes />}>
                   <Route path="/home" element={<Dashboard />}></Route>
                   <Route path="/interview/:id" element={<Interview />}></Route>
                   <Route
@@ -28,7 +28,7 @@ const App = () => {
                   <Route path="/history" element={<History />}></Route>
                   <Route path="/about" element={<About />}></Route>
                   <Route path="/price" element={<Pricing />}></Route>
-              {/* </Route> */}
+              </Route>
           </Routes>
       </div>
   );

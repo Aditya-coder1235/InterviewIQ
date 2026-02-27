@@ -4,7 +4,6 @@ import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
-import A from "./A";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -127,22 +126,22 @@ const Dashboard = () => {
                         />
                     </div>
                 </div>
+                {/* <A/> */}
 
-                
-                <div className="h-60 q w-full text-white flex items-center justify-around text-2xl font-bold">
+                {/* <div className="h-60 mb-  w-full tex-white bg-gray-100 flex items-center justify-around text-2xl font-bold">
                     <div className="text-center">
                         100+ Students <br /> Practiced
                     </div>
                     <div className="text-center">
                         50+ Mock Interviews <br /> Completed
                     </div>
-                    <div className="text-center">4.8/5 Average <br /> Rating</div>
                     <div className="text-center">
-                        10 Active <br /> Users 
+                        4.8/5 Average <br /> Rating
                     </div>
-                </div> 
-
-                <A/>
+                    <div className="text-center">
+                        10 Active <br /> Users
+                    </div>
+                </div> */}
             </div>
             <Footer />
         </div>

@@ -38,7 +38,7 @@ const History = () => {
 
                         <button
                             onClick={() => setExpanded(!expanded)}
-                            className="bg-blue-500 text-white px-2 py-1 text-xs md:px-4 md:py-2 rounded-lg text-sm hover:bg-blue-700 transition"
+                            className=" c text-white px-2 py-1  md:px-4 md:py-2 rounded-lg text-sm  transition"
                         >
                             {expanded ? "Close" : "View All"}
                         </button>
