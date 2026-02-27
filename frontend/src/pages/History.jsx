@@ -11,7 +11,7 @@ const History = () => {
         try {
             // setLoading(true);
             let res = await axios.get(
-                "https://interviewiq-zjne.onrender.com/api/interview/history",
+                "https://ai-interview-backend-0upj.onrender.com/api/interview/history",
                 { withCredentials: true },
             );
             // console.log();
@@ -28,7 +28,7 @@ const History = () => {
     return (
         <div>
             <Navbar />
-            {history.length <= 0 && <h2 className="text-center text-2xl font-semibold flex items-center justify-center min-h-screen">No Interview Found !</h2>}
+            {history.length <= 0 && <h2 className="text-center text-2xl font-semibold flex mt-40 justify-center min-h-screen">No Interview Found</h2>}
             {history.length > 0 && (
                 <div className="w-[85%] mx-auto md:mt-2 pt-7 min-h-screen">
                     <div className="flex justify-between items-center mb-6">

@@ -13,8 +13,8 @@ const Landing = () => {
     return (
         <div>
             <nav className="flex h-16 border-b-gray-200 items-center justify-around md:gap-40">
-                <div className="md:ms-25 md:text-xl font-bold b">
-                    InterviewIQ
+                <div className="md:ms-12">
+                    <img src="/logo.png" alt=""  className="h-15"/>
                 </div>
                 <div className="flex  md:gap-8 md:font-semibold opacity-60">
                     <a href="/login" className="hidden p md:inline-block">
@@ -35,7 +35,7 @@ const Landing = () => {
                         sign in
                     </Link>
                     <button
-                        className="md:btn p-1 md:p-3 text-xs rounded bg-blue-500 text-white"
+                        className="md:btn p-1 md:p-3 c text-xs rounded bg-blue-500 text-white"
                         onClick={() => navigate("/signup")}
                     >
                         Get Started Free
@@ -43,9 +43,9 @@ const Landing = () => {
                 </div>
             </nav>
 
-            <div className="bg-gray-100 w-full  min-h-screen">
+            <div className="bg-gray-10 w-full  min-h-screen">
                 <div className="flex gap-20  ">
-                    <div className="flex flex-col text-center  md:ms-40  md:pt-22  pt-15">
+                    <div className="flex flex-col text-center md:text-start md:ms-40  md:pt-22  pt-15">
                         <h1 className="text-5xl font-bold tracking-wide">
                             Ace Your Next
                         </h1>
@@ -66,15 +66,19 @@ const Landing = () => {
                         </p>
                         <button
                             onClick={() => navigate("/signup")}
-                            className="btn mt-9 w-50 m-auto bg-blue-500 text-white
+                            className="btn mt-9 c w-50 m-auto md:ms-0 bg-blue-500 text-white
 "
                         >
                             <Play size={15} />
                             Start Practicing Free
                         </button>
                     </div>
-                    <div className="pt-15 hidden md:block">
-                        <img src="/b.png" alt="" className="w-120" />
+                    <div className="pt-22 hidden md:block">
+                        <img
+                            src="/b.png"
+                            alt="Interview AI Dashboard"
+                            className="w-120 "
+                        />
                     </div>
                 </div>
 
@@ -91,8 +95,8 @@ const Landing = () => {
                     </p>
                     <div className="flex justify-center flex-col items-center md:flex-row mt-15 gap-5">
                         <div className="r w-60 h p-8 h-80 rounded-2xl ">
-                            <div className="c w-9 flex items-center h-9 m-auto rounded-xl">
-                                <Brain className="m-auto" />
+                            <div className="c w-10 flex items-center h-10 m-auto rounded-xl">
+                                <Brain className="m-auto text-white" />
                             </div>
                             <h3 className="font-bold pt-8 pb-8">
                                 AI-Powered Analysis
@@ -104,8 +108,8 @@ const Landing = () => {
                             </p>
                         </div>
                         <div className="r w-60 h p-8 h-80 rounded-2xl ">
-                            <div className="c w-9 flex items-center h-9 m-auto rounded-xl">
-                                <Mic className="m-auto" />
+                            <div className="c w-10 flex items-center h-10 m-auto rounded-xl">
+                                <Mic className="m-auto text-white" />
                             </div>
                             <h3 className="font-bold pt-8 pb-8">
                                 Realistic Mock Interviews
@@ -117,8 +121,8 @@ const Landing = () => {
                             </p>
                         </div>
                         <div className="r w-60 h p-8 h-80 rounded-2xl ">
-                            <div className="c w-9 flex items-center h-9 m-auto rounded-xl">
-                                <ListChevronsUpDown className="m-auto" />
+                            <div className="c w-10 flex items-center h-10 m-auto rounded-xl">
+                                <ListChevronsUpDown className="m-auto text-white" />
                             </div>
                             <h3 className="font-bold pt-8 pb-8">
                                 Detailed Performance Analytics
@@ -129,8 +133,8 @@ const Landing = () => {
                             </p>
                         </div>
                         <div className="r w-60 h p-8 h-80 rounded-2xl ">
-                            <div className="c w-9 flex items-center h-9 m-auto rounded-xl">
-                                <CirclePile className="m-auto" />
+                            <div className="c w-10 flex items-center h-10 m-auto rounded-xl">
+                                <CirclePile className="m-auto text-white" />
                             </div>
                             <h3 className="font-bold pt-8 pb-8">
                                 Industry-Specific Questions

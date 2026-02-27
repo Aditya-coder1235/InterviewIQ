@@ -8,7 +8,7 @@ const Navbar = () => {
     const userLogout = async () => {
         try {
             let res = await axios.post(
-                "https://interviewiq-zjne.onrender.com/api/auth/logout",
+                "https://ai-interview-backend-0upj.onrender.com/api/auth/logout",
                 {},
                 { withCredentials: true },
             );
@@ -23,7 +23,9 @@ const Navbar = () => {
 
     return (
         <nav className="flex h-16 border-b-gray-200 items-center gap- md:gap-40 justify-around">
-            <div className="md:ms-25 md:text-xl font-bold b">InterviewIQ</div>
+            <div className="md:ms-12">
+                <img src="/logo.png" alt="" className="h-15" />
+            </div>
             <div className="flex md:gap-8 md:text-sm text-xs gap-2 ms-8 md:ms-0 md:font-semibold opacity-75 md:opacity-60">
                 <Link to={"/home"} className="p">
                     Home

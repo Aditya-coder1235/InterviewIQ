@@ -1,36 +1,43 @@
 @import "tailwindcss";
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, corporate;
+    themes:
+        light --default,
+        dark --prefersdark,
+        corporate;
 }
 
-.b{
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+.b {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
-.c{
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+.c {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
 }
 
-.r{
-  border: 1px solid rgb(177, 176, 176);
+.r {
+    border: 1px solid rgb(177, 176, 176);
 }
 
-.p:hover{
-  background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+.p:hover {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
-body{
-  overflow-x: hidden;
+body {
+    overflow-x: hidden;
 }
 
-button{
-  cursor: pointer;
+button {
+    cursor: pointer;
+}
+
+.q {
+  background-color: #1A1A1A;
 }

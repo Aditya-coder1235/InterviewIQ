@@ -1,26 +1,24 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
+import A from "./A";
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const [showForm, setShowForm] = useState(false);
     const [role, setRole] = useState("");
-    const[loading,setLoading]=useState(false)
-    const[history,setHistory]=useState([])
-    const [expanded, setExpanded] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-     const notify = () => toast("Lets start the Interview!");
-
+    const notify = () => toast("Lets start the Interview!");
 
     const createInterview = async () => {
         try {
-            setLoading(true)
+            setLoading(true);
             let res = await axios.post(
-                "https://interviewiq-zjne.onrender.com/api/interview/start",
+                "https://ai-interview-backend-0upj.onrender.com/api/interview/start",
                 { role },
                 { withCredentials: true },
             );
@@ -28,52 +26,32 @@ const Dashboard = () => {
             navigate(`/interview/${res.data.interviewId}`);
         } catch (error) {
             console.log(error.response?.data?.message);
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
-    };
-
-    const getHistory = async () => {
-        try {
-            // setLoading(true);
-            let res = await axios.get(
-                "https://interviewiq-zjne.onrender.com/api/interview/history",
-                { withCredentials: true },
-            );
-            // console.log();
-            setHistory(res.data);
-            // navigate(`/interview/${res.data.interviewId}`);
-        } catch (error) {
-            console.log(error.response?.data?.message);
-        } 
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!role) {
-            alert("Please select role");
+            toast.error("Please select role");
             return;
         }
 
-        // console.log("Selected role:", role);
 
         createInterview();
     };
 
-    useEffect(()=>{
-        getHistory()
-    },[])
-
-    console.log(history)
 
     return (
         <div>
             <Navbar />
 
-            <div className="bg-gray-100">
-                <div className="flex md:justify-center flex-col md:flex-row gap-10 md:gap-25  w-full pt-25 min-h-screen">
-                    <div className="text-center">
+            <div className="bg-gray-10">
+                <div className="flex md:justify-center flex-col md:flex-row gap-10 md:gap-25  w-full  min-h-screen">
+                    <ToastContainer position="top-right" autoClose={3000} />
+                    <div className="text-center md:text-start pt-25">
                         <h1 className="text-5xl font-bold">Prepare for</h1>
                         <h1 className="text-5xl font-bold">
                             Interview With{" "}
@@ -88,152 +66,84 @@ const Dashboard = () => {
                         <div className="mt-8">
                             <button
                                 onClick={() => setShowForm(true)}
-                                className="bg-blue-500 text-white px-5 py-2 rounded-lg"
+                                className="bg-blue-500 text-white px-5 c py-2 rounded-lg"
                             >
                                 Start New Interview
                             </button>
 
                             {showForm && (
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="mt-4 bg-white p-4 rounded-lg shadow-md"
-                                >
-                                    <p className="mb-2 font-medium text-xs">
-                                        First Select Role
-                                    </p>
-
-                                    <select
-                                        value={role}
-                                        onChange={(e) =>
-                                            setRole(e.target.value)
-                                        }
-                                        className="r p-2 rounded w-full h-9 text-sm"
+                                <div className="mt-6 flex justify-center">
+                                    <form
+                                        onSubmit={handleSubmit}
+                                        className="w-full max-w-md bg-white/80 backdrop-blur-lg p-6 rounded-2xl shadow-xl border border-gray-200 transition-all duration-300"
                                     >
-                                        <option value="">Select Role</option>
-                                        <option value="Frontend">
-                                            Frontend Developer
-                                        </option>
-                                        <option value="Backend">
-                                            Backend Developer
-                                        </option>
-                                        <option value="MERN">MERN Stack</option>
-                                    </select>
+                                        <p className="mb-3 font-semibold text-gray-700 text-sm">
+                                            Select Your Interview Role
+                                        </p>
 
-                                    <button
-                                        type="submit"
-                                        className="mt-3 btn  px-4 py-2 rounded"
-                                        onClick={notify}
-                                    >
-                                        {" "}
-                                        {loading ? (
-                                            <span className="loading loading-spinner loading-sm"></span>
-                                        ) : (
-                                            "Continue"
-                                        )}
-                                        <ToastContainer />
-                                    </button>
-                                </form>
+                                        <select
+                                            value={role}
+                                            onChange={(e) =>
+                                                setRole(e.target.value)
+                                            }
+                                            className="w-full p-2.5 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                                        >
+                                            <option value="">
+                                                Select Role
+                                            </option>
+                                            <option value="Frontend">
+                                                Frontend Developer
+                                            </option>
+                                            <option value="Backend">
+                                                Backend Developer
+                                            </option>
+                                            <option value="MERN">
+                                                MERN Stack
+                                            </option>
+                                        </select>
+
+                                        <button
+                                            type="submit"
+                                            disabled={loading}
+                                            className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg font-medium transition-all duration-300 flex justify-center items-center gap-2 disabled:opacity-70"
+                                        >
+                                            {loading ? (
+                                                <span className="loading loading-spinner loading-sm"></span>
+                                            ) : (
+                                                "Continue"
+                                            )}
+                                        </button>
+                                    </form>
+                                </div>
                             )}
                         </div>
                     </div>
 
-                    <div className=" md:block">
+                    <div className=" md:block pt-12">
                         <img
-                            src="/f.png"
+                            src="https://framerusercontent.com/images/gCHx3IZfG0oQz1beoIQjk7WiMFI.png?scale-down-to=1024&width=4096&height=3957"
                             alt="AI Illustration"
-                            className="h-60 w-"
+                            className="h-110 w-"
                         />
                     </div>
                 </div>
 
-                {history.length > 0 && (
-                    <div className="w-[85%] mx-auto md:mt-2 min-h-screen">
-                        <div className="flex justify-between items-center mb-6">
-                            <h1 className="text-sm md:text-2xl  font-black ">
-                                Interview History
-                            </h1>
-
-                            <button
-                                onClick={() => setExpanded(!expanded)}
-                                className="bg-blue-500 text-white px-2 py-1 text-xs md:px-4 md:py-2 rounded-lg text-sm hover:bg-blue-700 transition"
-                            >
-                                {expanded ? "Close" : "View All"}
-                            </button>
-                        </div>
-
-                        <div
-                            className={`
-            transition-all duration-500 ease-in-out
-            overflow-hidden
-            ${expanded ? "max-h-550" : "max-h-222"}
-        `}
-                        >
-                            <div className="space-y-6">
-                                {history.map((item) => (
-                                    <div
-                                        key={item._id}
-                                        className="bg-whi rounded-2xl shadow-sm border border-slate-200 p-6"
-                                    >
-                                        <div className="flex justify-between items-center mb-6">
-                                            <div>
-                                                <h2 className="text-xs md:text-xl font-bold text-slate-800">
-                                                    {item.role} Interview
-                                                </h2>
-                                                <p className="text-sm text-slate-400"></p>
-                                            </div>
-
-                                            <span className="px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-600">
-                                                {item.status}
-                                            </span>
-                                        </div>
-
-                                        {expanded && (
-                                            <div className="space-y-4">
-                                                {item.questions.map(
-                                                    (q, index) => (
-                                                        <div
-                                                            key={q._id}
-                                                            className="border border-slate-100 rounded-xl p-4 bg-slate-50"
-                                                        >
-                                                            <div className="flex justify-between">
-                                                                <p className="text-sm font-medium">
-                                                                    {index + 1}.{" "}
-                                                                    {q.question}
-                                                                </p>
-
-                                                                <span
-                                                                    className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                                                                        q.score >
-                                                                        0
-                                                                            ? "bg-blue-100 text-blue-600"
-                                                                            : "bg-red-100 text-red-500"
-                                                                    }`}
-                                                                >
-                                                                    {q.score}
-                                                                </span>
-                                                            </div>
-
-                                                            {q.improvement && (
-                                                                <p className="mt-2 text-xs text-orange-500">
-                                                                    💡{" "}
-                                                                    {
-                                                                        q.improvement
-                                                                    }
-                                                                </p>
-                                                            )}
-                                                        </div>
-                                                    ),
-                                                )}
-                                            </div>
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                
+                <div className="h-60 q w-full text-white flex items-center justify-around text-2xl font-bold">
+                    <div className="text-center">
+                        100+ Students <br /> Practiced
                     </div>
-                )}
-            </div>
+                    <div className="text-center">
+                        50+ Mock Interviews <br /> Completed
+                    </div>
+                    <div className="text-center">4.8/5 Average <br /> Rating</div>
+                    <div className="text-center">
+                        10 Active <br /> Users 
+                    </div>
+                </div> 
 
+                <A/>
+            </div>
             <Footer />
         </div>
     );

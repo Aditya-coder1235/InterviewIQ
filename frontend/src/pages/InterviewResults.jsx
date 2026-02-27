@@ -17,7 +17,7 @@ const InterviewResults = () => {
     const fetchInterview = async () => {
         try {
             const res = await axios.get(
-                `https://interviewiq-zjne.onrender.com/api/interview/getInterview/${id}`,
+                `https://ai-interview-backend-0upj.onrender.com/api/interview/getInterview/${id}`,
                 { withCredentials: true },
             );
             // setQuestions(res.data.interview.questions);

@@ -27,7 +27,7 @@ const Login = () => {
         try {
             setLoading(true);
             let res = await axios.post(
-                "https://interviewiq-zjne.onrender.com/api/auth/login",
+                "https://ai-interview-backend-0upj.onrender.com/api/auth/login",
                 formData,
                 { withCredentials: true },
             );
@@ -52,7 +52,7 @@ const Login = () => {
     return (
         <div className="flex justify-center mt-20 md:mt-0 min-h-screen py-5 px-4 bg-gray-50">
             <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-500 mb-6">
+                <h2 className="text-2xl b md:text-3xl font-bold text-center text-blue-500 mb-6">
                     Welcome Back
                 </h2>
 
@@ -98,7 +98,7 @@ const Login = () => {
 
                     <button
                         type="submit"
-                        className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+                        className="w-full c py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
                     >
                         {loading ? (
                             <span className="loading loading-spinner loading-sm"></span>

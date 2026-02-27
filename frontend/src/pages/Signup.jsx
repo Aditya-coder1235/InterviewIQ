@@ -28,7 +28,7 @@ const Signup = () => {
         try {
             setLoading(true)
             let res = await axios.post(
-                "https://interviewiq-zjne.onrender.com/api/auth/signup",
+                "https://ai-interview-backend-0upj.onrender.com/api/auth/signup",
                 formData,
                 { withCredentials: true },
             );
@@ -45,7 +45,7 @@ const Signup = () => {
     return (
         <div className="flex justify-center mt-20 md:mt-0 md:items-center min-h-screen py-5 bg-gray-50 px-4">
             <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-6 md:p-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-center text-blue-500 mb-6">
+                <h2 className="text-2xl b md:text-3xl font-bold text-center text-blue-500 mb-6">
                     Create Your Account
                 </h2>
 
@@ -106,7 +106,7 @@ const Signup = () => {
 
                     <button
                         type="submit"
-                        className="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
+                        className="w-full py-3 c bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-700 transition"
                     >
                         {loading ? (
                             <span className="loading loading-spinner loading-sm"></span>
