@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import axios from "axios";
 
 const Navbar = () => {
     let user = localStorage.getItem("user");
+    const navigate=useNavigate()
 
     const userLogout = async () => {
         try {
@@ -12,10 +13,11 @@ const Navbar = () => {
                 {},
                 { withCredentials: true },
             );
-            console.log(res.data);
+            // console.log(res.data);
             localStorage.removeItem("user");
             localStorage.removeItem("userId");
             localStorage.removeItem("email");
+            navigate('/login')
         } catch (error) {
             console.log(error.response.data.message);
         }
