@@ -14,7 +14,7 @@ connectDb()
     .catch(err => console.log(err));
 
 app.use(cors({
-    origin: "https://interviewiq-ai.vercel.app",
+    origin: "https://intervai-a.vercel.app",
     credentials: true
 }));
 
