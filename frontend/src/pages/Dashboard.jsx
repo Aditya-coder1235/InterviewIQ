@@ -110,7 +110,7 @@ export default function DashboardPage() {
         createInterview();
     };
 
-    const name = localStorage.getItem("name");
+    const name = localStorage.getItem("user") || "User";
 
     return (
         <div className="min-h-dvh bg-slate-50 font-sans text-slate-900">
