@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
+import { API_URL } from "../config/api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -19,7 +20,7 @@ const InterviewResults = () => {
     const fetchInterview = async () => {
         try {
             const res = await axios.get(
-                `https://ai-interview-backend-0upj.onrender.com/api/interview/getInterview/${id}`,
+                `${API_URL}/api/interview/getInterview/${id}`,
                 { withCredentials: true },
             );
             // setQuestions(res.data.interview.questions);
@@ -39,7 +40,7 @@ const InterviewResults = () => {
     // console.log(questions);
     return (
         <div>
-            <Navbar />
+           
 
             <div className="min-h-screen bg-white p-10">
                 <div className="max-w-5xl mx-auto">
@@ -145,7 +146,7 @@ const InterviewResults = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+           
         </div>
     );
 };

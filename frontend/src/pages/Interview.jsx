@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { API_URL } from "../config/api";
 import { useParams, useNavigate } from "react-router-dom";
 import { User, Bot, Send, CheckCheck } from "lucide-react";
 import Navbar from "../components/Navbar";
@@ -23,7 +24,7 @@ const Interview = () => {
     const fetchInterview = async () => {
         try {
             const res = await axios.get(
-                `https://ai-interview-backend-0upj.onrender.com/api/interview/getInterview/${id}`,
+                `${API_URL}/api/interview/getInterview/${id}`,
                 { withCredentials: true },
             );
             setQuestions(res.data.interview.questions);
@@ -66,7 +67,7 @@ const Interview = () => {
         try {
             setSubmitting(true);
             let res = await axios.post(
-                "https://ai-interview-backend-0upj.onrender.com/api/interview/submit",
+                `${API_URL}/api/interview/submit`,
                 {
                     interviewId: id,
                     answers: finalAnswers,
@@ -87,7 +88,6 @@ const Interview = () => {
 
     return (
         <div className=" h-screen bg-slate-50">
-            <Navbar />
             <ToastContainer position="top-right" autoClose={3000} />
             <div className="flex-1 flex flex-col">
                 <h1 className="text-center pt-5 text-blue-500 md:text-4xl font-bold">
@@ -107,23 +107,10 @@ const Interview = () => {
                         </div>
                     </div>
 
-                    {answer && (
-                        <div className="flex justify-end">
-                            <div className="max-w-[70%] flex gap-4 flex-row-reverse">
-                                <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center">
-                                    <User size={16} />
-                                </div>
-                                <div className="p-4 rounded-2xl bg-blue-500 text-white shadow-sm ">
-                                    <p className="text-sm">{answer}</p>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
                     <div ref={chatEndRef} />
                 </div>
 
-                <div className="p-6 bg-white mt-15 border-t border-slate-200">
+                <div className="p-6 bg-white  border-t border-slate-200 relative top-61">
                     <div className="flex items-center gap-4 bg-slate-50 border p-2 rounded-2xl">
                         <textarea
                             value={answer}
@@ -164,7 +151,6 @@ const Interview = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

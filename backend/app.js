@@ -13,10 +13,17 @@ connectDb()
     .then(() => console.log("Database connected"))
     .catch(err => console.log(err));
 
-app.use(cors({
-    origin: "https://intervai-a.vercel.app",
-    credentials: true
-}));
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://your-frontend-deployed-url.com"
+];
+
+app.use(
+    cors({
+        origin: allowedOrigins,
+        credentials: true
+    })
+);
 
 app.use(express.json());
 app.use(cookieParser());

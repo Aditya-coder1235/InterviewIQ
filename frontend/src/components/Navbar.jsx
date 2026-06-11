@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
+import { API_URL } from "../config/api";
 
 const Navbar = () => {
     let user = localStorage.getItem("user");
@@ -9,7 +10,7 @@ const Navbar = () => {
     const userLogout = async () => {
         try {
             let res = await axios.post(
-                "https://ai-interview-backend-0upj.onrender.com/api/auth/logout",
+                `${API_URL}/api/auth/logout`,
                 {},
                 { withCredentials: true },
             );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { API_URL } from "../config/api";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -11,7 +12,7 @@ const History = () => {
         try {
             // setLoading(true);
             let res = await axios.get(
-                "https://ai-interview-backend-0upj.onrender.com/api/interview/history",
+                `${API_URL}/api/interview/history`,
                 { withCredentials: true },
             );
             // console.log();
